@@ -1,18 +1,20 @@
 package com.example.denvato_polls_demo.denvato_polls_demo.repository;
 
 import com.example.denvato_polls_demo.denvato_polls_demo.models.User;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository extends PagingAndSortingRepository<User, Long>
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>
 {
     Optional<User> findByEmail(String email);
 
     Optional<User> findByUsernameOrEmail(String username, String email);
 
-    List<User> findByIdIn(List<Long> userIds);
+//    List<User> findByUsernameIn(List<Long> userIds);
 
     Optional<User> findByUsername(String username);
 
